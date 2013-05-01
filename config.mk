@@ -20,7 +20,7 @@ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS}
 
 # flags
 CPPFLAGS = -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
-CFLAGS = -g -std=c11 -pedantic -Wall -O3 ${INCS} ${CPPFLAGS}
+CFLAGS = -g -std=c11 -pedantic -Wno-deprecated-declarations -Wall -O3 ${INCS} ${CPPFLAGS}
 #CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
 LDFLAGS = -g ${LIBS}
 #LDFLAGS = -s ${LIBS}
