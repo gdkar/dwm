@@ -1509,8 +1509,7 @@ setup(void) {
 	root = RootWindow(dpy, screen);
 	drw = drw_create(dpy, screen, root, sw, sh);
 	drw_load_fonts(drw, fonts, LENGTH(fonts));
-	if (!drw->fontcount)
-		die("No fonts could be loaded.\n");
+	if (!drw->fontcount) die("No fonts could be loaded.\n");
 	bh = drw->fonts[0]->h + 2;
 	updategeom();
 	/* init atoms */

@@ -364,8 +364,7 @@ drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, const char *tex
 
 void
 drw_map(Drw *drw, Window win, int x, int y, unsigned int w, unsigned int h) {
-	if(!drw)
-		return;
+	if(!drw) return;
 	XCopyArea(drw->dpy, drw->drawable, win, drw->gc, x, y, w, h, x, y);
 	XSync(drw->dpy, False);
 }
@@ -375,8 +374,7 @@ void
 drw_font_getexts(Fnt *font, const char *text, unsigned int len, Extnts *tex) {
 	XGlyphInfo ext;
 
-	if(!font || !text)
-		return;
+	if(!font || !text) return;
 	XftTextExtentsUtf8(font->dpy, font->xfont, (XftChar8 *)text, len, &ext);
 	tex->h = font->h;
 	tex->w = ext.xOff;
@@ -386,8 +384,7 @@ unsigned int
 drw_font_getexts_width(Fnt *font, const char *text, unsigned int len) {
 	Extnts tex;
 
-	if(!font)
-		return -1;
+	if(!font) return -1;
 	drw_font_getexts(font, text, len, &tex);
 	return tex.w;
 }
@@ -396,16 +393,14 @@ Cur *
 drw_cur_create(Drw *drw, int shape) {
 	Cur *cur = (Cur *)calloc(1, sizeof(Cur));
 
-	if(!drw || !cur)
-		return NULL;
+	if(!drw || !cur) return NULL;
 	cur->cursor = XCreateFontCursor(drw->dpy, shape);
 	return cur;
 }
 
 void
 drw_cur_free(Drw *drw, Cur *cursor) {
-	if(!drw || !cursor)
-		return;
+	if(!drw || !cursor) return;
 	XFreeCursor(drw->dpy, cursor->cursor);
 	free(cursor);
 }

@@ -3,10 +3,11 @@
 /* appearance */
 static const char *fonts[] = {
     "ProggyTinyTTSZ:size=9",
-    "Sans:size=10.5",
-    "VL Gothic:size=10.5",
-    "WenQuanYi Micro Hei:size=10.5",
+    "Sans:size=7",
+    "VL Gothic:size=7",
+    "WenQuanYi Micro Hei:size=7",
 };
+static const char font[]            = "-misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-*";
 static const char dmenufont[]       = "-misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-*";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
@@ -57,9 +58,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char        dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]  = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[]  = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]   = { "x-terminal-emulator", NULL };
-static const char *tmuxcmd[]   = { "x-terminal-emulator", "-e", "tmux -2 -u  new-session \\; attach",NULL};
+static const char *tmuxcmd[]   = { "x-terminal-emulator", "-l","--execute","tmux","-2","-u","new-session",";","attach",NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
