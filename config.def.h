@@ -2,13 +2,13 @@
 
 /* appearance */
 static const char *fonts[] = {
-    "ProggyTinyTTSZ:size=7",
+    "ProggyTinyTTSZ:size=9",
     "Sans:size=7",
     "VL Gothic:size=7",
     "WenQuanYi Micro Hei:size=7",
 };
-static const char font[]            = "-misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-*";
-static const char dmenufont[]       = "-misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-*";
+static const char font[]            = "ProggyTinyTTSZ:size=9";
+static const char dmenufont[]       = "ProggyTinyTTSZ:size=9";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -98,6 +98,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      killparent,     {0} },
 };
 
 /* button definitions */
