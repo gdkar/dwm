@@ -20,13 +20,19 @@ options:
 
 ${OBJ}: config.h config.mk
 
-config.h:
+config.h: cleancfg
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
+
+dwm: cleancfg
 
 dwm: ${OBJ}
 	@echo CC -o $@
 	@${CC} -o $@ ${OBJ} ${LDFLAGS}
+
+cleancfg:
+	@echo cleaning config.h
+	@rm -rf config.h
 
 clean:
 	@echo cleaning
@@ -57,4 +63,4 @@ uninstall:
 	@echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
 	@rm -f ${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-.PHONY: all options clean dist install uninstall
+.PHONY: all options clean dist install uninstall cleancfg
