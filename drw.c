@@ -220,7 +220,7 @@ int
 drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, const char *text, int invert) {
 	char buf[1024];
 	int tx, ty, th;
-	Extnts tex;
+	Extnts tex = { 0 };
 	Colormap cmap;
 	Visual *vis;
 	XftDraw *d;
@@ -382,7 +382,7 @@ drw_font_getexts(Fnt *font, const char *text, unsigned int len, Extnts *tex) {
 
 unsigned int
 drw_font_getexts_width(Fnt *font, const char *text, unsigned int len) {
-	Extnts tex;
+	Extnts tex = { 0 };
 
 	if(!font) return -1;
 	drw_font_getexts(font, text, len, &tex);

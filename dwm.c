@@ -72,6 +72,7 @@ typedef union {
 	unsigned int ui;
 	float f;
 	const void *v;
+    char * const *s;
 } Arg;
 
 typedef struct {
@@ -1668,10 +1669,11 @@ spawn(const Arg *arg) {
 	if(arg->v == dmenucmd)
 		dmenumon[0] = '0' + selmon->num;
 	if(fork() == 0) {
-		if(dpy) close(ConnectionNumber(dpy));
+		if(dpy) 
+            close(ConnectionNumber(dpy));
 		setsid();
-		execvp(((char **)arg->v)[0], (char **)arg->v);
-		fprintf(stderr, "dwm: execvp %s", ((char **)arg->v)[0]);
+		execvp((arg->s)[0], arg->s);
+		fprintf(stderr, "dwm: execvp %s", arg->s[0]);
 		perror(" failed");
 		exit(0);
 	}

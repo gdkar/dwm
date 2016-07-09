@@ -14,21 +14,23 @@ options:
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
 
-.c.o:
+%.o: %.c
 	@echo CC $<
-	@${CC} -c ${CFLAGS} $<
+	@${CC} -c ${CFLAGS} $< -o $@
 
-${OBJ}: config.h config.mk
-
-config.h: cleancfg
+config.h: config.def.h
 	@echo creating $@ from config.def.h
-	@cp config.def.h $@
+	@echo cp $< $@
+	@cp $< $@
 
-dwm: cleancfg
+${OBJ}: config.h config.mk Makefile
+
+
+#dwm: cleancfg
 
 dwm: ${OBJ}
 	@echo CC -o $@
-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
+	@${CC} -o $@ ${OBJ} ${CFLAGS} ${LDFLAGS}
 
 cleancfg:
 	@echo cleaning config.h

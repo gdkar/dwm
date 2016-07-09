@@ -2,13 +2,13 @@
 
 /* appearance */
 static const char *fonts[] = {
-    "ProggyTinyTTSZ:size=12",
+    "ProggyTinyTTSZ:size=11",
     "Sans:size=7",
     "VL Gothic:size=7",
     "WenQuanYi Micro Hei:size=7",
 };
-static const char font[]            = "ProggyTinyTTSZ:size=12";
-static const char dmenufont[]       = "ProggyTinyTTSZ:size=12";
+static const char font[]            = "ProggyTinyTTSZ:size=11";
+static const char dmenufont[]       = "ProggyTinyTTSZ:size=11";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -29,8 +29,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
+/*	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+    */
 };
 
 /* layout(s) */
@@ -54,13 +55,13 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+//#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char        dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]  = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]   = { "x-terminal-emulator", NULL };
-static const char *tmuxcmd[]   = { "x-terminal-emulator", "-l","--execute","tmux","-2","-u","new-session",";","attach",NULL};
+static const char * const dmenucmd[]  = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char * const termcmd[]   = { "x-terminal-emulator", NULL};
+static const char * const tmuxcmd[]   = { "x-terminal-emulator" ,"-e","tmux","-2","-u","new-session",";","attach",NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

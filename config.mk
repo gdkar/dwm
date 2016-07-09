@@ -27,7 +27,7 @@ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS}
 # flags
 CPPFLAGS = -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS   = -std=gnu11 -Wall -Wno-deprecated-declarations -O3 -Ofast -g -ggdb ${INCS} ${CPPFLAGS}
+CFLAGS   = -std=gnu11 -Wall -Wextra -O3 -Ofast -g -ggdb ${INCS} ${CPPFLAGS}
 LDFLAGS  = -g ${LIBS}
 
 # Solaris
